@@ -1,9 +1,13 @@
 # [TCon](https://github.com/theajack/tcon)
 ### 基于 try catch 捕获所有异常的移动端调试工具
+
+[TOC]
+
 ----
 
 [线上体验](https://www.theajack.com/tcon)
-
+[version.md](https://github.com/theajack/tcon/blob/master/helper/version.md)
+[build.md](https://github.com/theajack/tcon/blob/master/helper/REMADE.build.md)
 ----
 #### 1. 效果图
 #### 2. Why TCon
