@@ -2,7 +2,7 @@ import hackConsole from './hackConsole'
 import tool from './tool';
 import obejectViewer from './objectViewer';
 import {generateFunc,checkType} from './func';
-import json from './version.json'
+import version from './version.js'
 
 class Log{
     constructor(){
@@ -11,7 +11,7 @@ class Log{
         this.lastConsoleValue = {};
         this.lastType = '';
         this.index=1;
-        this.version = json.version;
+        this.version = version;
         // tab , page , index
     }
     init(){

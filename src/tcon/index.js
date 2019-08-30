@@ -5,10 +5,10 @@ import tool from './lib/tool'
 import {editor} from './editor/editor'
 import stack from './editor/codeStack'
 import {initStorage,storageEnable} from './storageState'
-import json from './version.json'
+import version from './version.js'
 // import {choose} from './editor/input'
 let TCon = {
-    version:json.version,
+    version:version,
     use:panel.use.bind(panel),
     f:f,
     tool:tool,

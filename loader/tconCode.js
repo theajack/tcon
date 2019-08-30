@@ -1,6 +1,6 @@
 // var a=a.a.a; 直接赋值
 const recast = require('recast');
-const json = require('./version.json');
+const version = require('./version.js');
 
 const {
   tryStatement,
@@ -100,7 +100,7 @@ function tconCode(code,opts) {
     }
     return recast.print(ast).code;
 }
-tconCode.version = json.version;
+tconCode.version = version;
 
 function refactor(path, isThrow){
 

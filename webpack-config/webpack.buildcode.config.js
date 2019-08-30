@@ -1,13 +1,12 @@
-let version = require('./version.json').version;
-
-var gulp = require('gulp');
-gulp.src('./version.json')
-    .pipe(gulp.dest('./loader'));
+let version = require('../helper/version.json').version;
+let tool = require('../helper/tool');
+let path = require('path');
+tool.write('./loader/version.js','module.exports="'+version+'";')
 
 module.exports = {
-    entry: __dirname + "/loader/tconCode.js",
+    entry: path.resolve('./',"loader/tconCode.js"),
     output: {
-        path: __dirname + "/github/dist/tconCode",
+        path: path.resolve('./',"github/dist/tconCode"),
         filename: "tconCode."+version+".min.js"
     },
     module: {
@@ -20,7 +19,5 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-    },
-    plugins: [
-    ]
+    }
 };

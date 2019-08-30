@@ -1,22 +1,22 @@
 var gulp = require('gulp');
 var fs = require('fs');
-let render = require('./template/render.js')
+let render = require('../template/render.js')
 let version = require('./version.json').version;
 let files = [
-    './package.json',
-    './npm/tcon/package.json',
-    './npm/tcon-loader/package.json',
-    './npm/tcon-log/package.json',
-    './tnpm/tcon/package.json',
-    './tnpm/tcon-loader/package.json',
-    './tnpm/tcon-log/package.json',
+    '../package.json',
+    '../npm/tcon/package.json',
+    '../npm/tcon-loader/package.json',
+    '../npm/tcon-log/package.json',
+    '../tnpm/tcon/package.json',
+    '../tnpm/tcon-loader/package.json',
+    '../tnpm/tcon-log/package.json',
 ]
 
 function modVersion(){
     files.forEach(file=>{
         var package = require(file)
         package.version = version;
-        fs.writeFile(file, JSON.stringify(package,null, 4), 'utf8', (err) => {
+        fs.writeFile(file.substr(1), JSON.stringify(package,null, 4), 'utf8', (err) => {
             if (err) throw err;
         });
     })
@@ -47,7 +47,11 @@ function task(){
         .pipe(gulp.dest('./github/src'));
     gulp.src('template/**/*')
         .pipe(gulp.dest('./github/template'));
-    gulp.src('*.*')
+    gulp.src('helper/**/*')
+        .pipe(gulp.dest('./github/helper'));
+    gulp.src('webpack-config/**/*')
+        .pipe(gulp.dest('./github/webpack-config'));
+    gulp.src(['*.*','.babelrc','.gitignore','LICENSE'])
         .pipe(gulp.dest('./github'))
         .on('end',function(){
             render();

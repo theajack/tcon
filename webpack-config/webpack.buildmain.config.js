@@ -1,22 +1,16 @@
-let version = require('./version.json').version;
+let version = require('../helper/version.json').version;
 
-let fs = require('fs')
+let path = require('path');
+let tool = require('../helper/tool');
+tool.write('./src/tcon/version.js','export default "'+version+'";')
 
-var gulp = require('gulp');
-gulp.src('./version.json')
-    .pipe(gulp.dest('./src/tcon'));
+tool.write('./github/dist/version.js','window.newVersion = "'+version+'";')
 
-function modVersion(){
-    fs.writeFile('./github/dist/version.js', 'window.newVersion = "'+version+'";', 'utf8', (err) => {
-        if (err) throw err;
-    });
-}
-modVersion();
 
 module.exports = {
-    entry: __dirname + "/src/tcon/index.js",
+    entry: path.resolve('./',"src/tcon/index.js"),
     output: {
-        path: __dirname + "/github/dist/tcon",
+        path: path.resolve('./',"github/dist/tcon"),
         filename: "tcon."+version+".min.js"
     },
     module: {
@@ -31,7 +25,7 @@ module.exports = {
             {
                 test: /(.js)$/,
                 use: [{
-                        loader: __dirname + "/loader/zipCssInJs.js"
+                        loader: path.resolve('./',"loader/zipCssInJs.js")
                     }],
                 exclude: /node_modules/
             }

@@ -2,14 +2,14 @@
 // const ErudaWebapckPlugin = require('eruda-webpack-plugin')
 const path = require('path')
 module.exports = {
-    entry: __dirname + "/src/main.js",
+    entry: path.resolve('./',"src/main.js"),
     output: {
-        path: __dirname + "/public",
+        path: path.resolve('./',"public"),
         filename: "bundle.js"
     },
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: "./public",
+        contentBase: path.resolve('./',"public"),
         historyApiFallback: true,
         inline: true,
         host:'localhost'//'0.0.0.0' //
@@ -20,13 +20,13 @@ module.exports = {
                 test: /(.js)$/,
                 use: [
                     {
-                        loader: path.resolve('loader/index.js')
+                        loader: path.resolve('./','loader/index.js')
                     }
                 ],
                 exclude: [
                     /node_modules/, 
-                    path.resolve(__dirname, "src/tcon"), 
-                    path.resolve(__dirname, "src/plugin")
+                    path.resolve('./',"src/tcon"),
+                    path.resolve('./',"src/plugin")
                 ]
             },
             {

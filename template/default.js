@@ -1,5 +1,5 @@
 
-let version = require('../version.json').version;
+let version = require('../helper/version.json').version;
 let def = {
     gitRes: 'https://git.code.oa.com/tackchen/tcon',
     online: 'https://www.theajack.com/tcon',
