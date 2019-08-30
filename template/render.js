@@ -9,6 +9,8 @@ let config = {
         des:[
             './github/README.md',
             './npm/tcon/README.md',
+            './npm/tcon-loader/README.md',
+            './npm/tcon-log/README.md',
         ],
         json:{
             gitRes: 'https://github.com/theajack/tcon',
@@ -23,7 +25,9 @@ let config = {
         tpl:'./template/README.md',
         des:[
             './README.md',
-            './tnpm/tcon/README.md'
+            './tnpm/tcon/README.md',
+            './tnpm/tcon-loader/README.md',
+            './tnpm/tcon-log/README.md',
         ],
         json:{}
     }
