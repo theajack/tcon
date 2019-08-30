@@ -1,5 +1,9 @@
 let version = require('./version.json').version;
 
+var gulp = require('gulp');
+gulp.src('./version.json')
+    .pipe(gulp.dest('./loader'));
+
 module.exports = {
     entry: __dirname + "/loader/tconCode.js",
     output: {

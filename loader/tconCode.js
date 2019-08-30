@@ -1,6 +1,6 @@
 // var a=a.a.a; 直接赋值
 const recast = require('recast');
-const json = require('../version.json');
+const json = require('./version.json');
 
 const {
   tryStatement,

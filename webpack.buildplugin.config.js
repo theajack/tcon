@@ -1,7 +1,11 @@
 let version = require('./version.json').version;
 
+var gulp = require('gulp');
+
 module.exports = (env)=>{
     let plugin = env.pluginname;
+    gulp.src('./version.json')
+        .pipe(gulp.dest('./src/plugin/'+plugin));
     return {
         entry: __dirname + "/src/plugin/"+plugin+"/index.js",
         output: {

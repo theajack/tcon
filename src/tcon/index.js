@@ -5,7 +5,7 @@ import tool from './lib/tool'
 import {editor} from './editor/editor'
 import stack from './editor/codeStack'
 import {initStorage,storageEnable} from './storageState'
-import json from '../../version.json'
+import json from './version.json'
 // import {choose} from './editor/input'
 let TCon = {
     version:json.version,

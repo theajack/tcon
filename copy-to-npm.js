@@ -26,20 +26,16 @@ function modVersion(){
 function task(){
     modVersion();
 
-
     gulp.src('src/tcon/**/*')
-        .pipe(gulp.dest('./tnpm/tcon'));
-    gulp.src('src/tcon/**/*')
+        .pipe(gulp.dest('./tnpm/tcon'))
         .pipe(gulp.dest('./npm/tcon'));
     
     gulp.src('src/plugin/log/**/*')
-        .pipe(gulp.dest('./tnpm/tcon-log'));
-    gulp.src('src/plugin/log/**/*')
+        .pipe(gulp.dest('./tnpm/tcon-log'))
         .pipe(gulp.dest('./npm/tcon-log'));
     
-    gulp.src(['loader/*.js','README.md'])
-        .pipe(gulp.dest('./tnpm/tcon-loader'));
-    gulp.src(['loader/*.js','README.md'])
+    gulp.src(['loader/*.js','loader/*.json','README.md'])
+        .pipe(gulp.dest('./tnpm/tcon-loader'))
         .pipe(gulp.dest('./npm/tcon-loader'));
 
 
@@ -56,7 +52,5 @@ function task(){
         .on('end',function(){
             render();
         });
-        
-        
 }
 task();

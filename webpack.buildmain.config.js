@@ -2,6 +2,10 @@ let version = require('./version.json').version;
 
 let fs = require('fs')
 
+var gulp = require('gulp');
+gulp.src('./version.json')
+    .pipe(gulp.dest('./src/tcon'));
+
 function modVersion(){
     fs.writeFile('./github/dist/version.js', 'window.newVersion = "'+version+'";', 'utf8', (err) => {
         if (err) throw err;

@@ -2,7 +2,7 @@ import hackConsole from './hackConsole'
 import tool from './tool';
 import obejectViewer from './objectViewer';
 import {generateFunc,checkType} from './func';
-import json from '../../../version.json'
+import json from './version.json'
 
 class Log{
     constructor(){
