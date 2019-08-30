@@ -15,7 +15,7 @@
     <div style='overflow-x:auto'>
         <h3 style='color: #aaa;'>PC端访问请按F12然后选择移动端调试</h3>
 
-        <h1><a href="https://git.code.oa.com/tackchen/tcon">TCon</a></h1>
+        <h1><a href="https://github.com/theajack/tcon">TCon</a></h1>
 
         <h3>基于 try catch 捕获所有异常的移动端调试工具</h3>
         
@@ -31,6 +31,45 @@
         
         <hr/>
         
+        <p>tcon 图例
+        <img alt="导图" src="https://www.theajack.com/tcon/images/TCon.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon1" src="https://www.theajack.com/tcon/images/tcon1.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon2" src="https://www.theajack.com/tcon/images/tcon2.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon3" src="https://www.theajack.com/tcon/images/tcon3.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon4" src="https://www.theajack.com/tcon/images/tcon4.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon5" src="https://www.theajack.com/tcon/images/t5.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon6" src="https://www.theajack.com/tcon/images/t6.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon7" src="https://www.theajack.com/tcon/images/t7.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon8" src="https://www.theajack.com/tcon/images/t8.png"/></p>
+        
+        <hr/>
+        
+        <p><img alt="tcon9" src="https://www.theajack.com/tcon/images/t9.png"/></p>
+
         <h1>1.Why TCon</h1>
         
         <h4>1.1 捕获所有异常</h4>
@@ -87,18 +126,18 @@
         
         <p>1.安装tcon主模块
         <pre>
-        tnpm install @tencent/tcon
+        npm install tcon-main
         </pre></p>
         
         <p>2.安装tcon-log插件
         <pre>
-        tnpm install @tencent/tcon-log
+        npm install tcon-log
         </pre>
         3.使用
         <pre></pre>`
-        import tcon from &#39;@tencent/tcon&#39;;
+        import tcon from &#39;tcon-main&#39;;
         //import tcon 主模块之后会生成一个 window.TCon 对象，这主要是提供给通过script标签引入方式使用的，这里可以忽略
-        import &#39;@tencent/tcon-log&#39;;</p>
+        import &#39;tcon-log&#39;;</p>
         
         <p>tcon.init(); // 默认开启tcon调试</p>
         
@@ -123,14 +162,14 @@
         
         <p>安装tcon-loader
         <pre>
-        tnpm install @tencent/tcon-loader --save-dev
+        npm install tcon-loader --save-dev
         </pre>
-        在您项目地webpack配置中加入 loader:&#39;@tencent/tcon-loader&#39;
+        在您项目地webpack配置中加入 loader:&#39;tcon-loader&#39;
         <pre>
         ...
         {
             test: /\.js$/,
-            loader: &#39;@tencent/tcon-loader&#39;,
+            loader: &#39;tcon-loader&#39;,
             include: [
                 path.resolve(__dirname, &#39;您的需要调试的开发目录，一般为src&#39;)
             ],
@@ -157,7 +196,7 @@
         ...
         {
             test: /\.js$/,
-            loader: &#39;@tencent/tcon-loader&#39;,
+            loader: &#39;tcon-loader&#39;,
             options:{
                 Return:false,
                 Declaration:false,
@@ -215,7 +254,7 @@
         <p>您也可以通过引入插件之后 通过 tcon.use(MyPlugin) 来加载插件，如</p>
         
         <p><pre>
-        import tcon from &#39;@tencent/tcon&#39;;
+        import tcon from &#39;tcon-main&#39;;
         import MyPlugin from &#39;MyPlugin&#39;;
         tcon.init();
         tcon.use(MyPlugin);
