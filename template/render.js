@@ -17,7 +17,7 @@ let config = {
             installTcon: 'tcon-main',
             installLog: 'tcon-log',
             installLoader: 'tcon-loader',
-            scriptSrcBase: 'https://www.theajack.com/tcon/',
+            scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
             npm:'npm'
         }
     },

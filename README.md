@@ -118,7 +118,7 @@ npm install tcon-main
 或 script 标签引入
 
 ```
-<script src="https://www.theajack.com/tcon/tcon/tcon.1.0.9.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.0.min.js"></script>
 ```
 
 
@@ -130,14 +130,14 @@ npm install tcon-log
 或 script 标签引入
 
 ```
-<script src="https://www.theajack.com/tcon/plugin/log/tcon-log.1.0.9.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/plugin/log/tcon-log.1.1.0.min.js"></script>
 ```
 
 
 如果 通过 script 标签引入 可引入
 
 ```
-<script src="https://www.theajack.com/tcon/loadTcon.js"></script>
+<script src="https://www.theajack.com/tcon/dist/loadTcon.js"></script>
 ```
 该js会自动加载最新版本，并自动初始化
 
@@ -242,13 +242,13 @@ script 标签引入：
 
 
 ```
-<script src="https://www.theajack.com/tcon/tconCode/tconCode.1.0.9.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tconCode/tconCode.1.1.0.min.js"></script>
 ```
 
 引入 tconCode之前您需要先引如入 tcon.js 
 
 ```
-<script src="https://www.theajack.com/tcon/tcon/tcon.1.0.9.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.0.min.js"></script>
 ```
 
 然后 您可以使用

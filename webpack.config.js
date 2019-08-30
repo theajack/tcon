@@ -12,7 +12,7 @@ module.exports = {
         contentBase: "./public",
         historyApiFallback: true,
         inline: true,
-        host:'0.0.0.0' //'localhost'//
+        host:'localhost'//'0.0.0.0' //
     },
     module: {
         rules: [

@@ -7,7 +7,7 @@ let def = {
     installTcon: '@tencent/tcon',
     installLog: '@tencent/tcon-log',
     installLoader: '@tencent/tcon-loader',
-    scriptSrcBase: 'https://www.theajack.com/tcon/',
+    scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
     version:version,
     npm:'tnpm'
 }
