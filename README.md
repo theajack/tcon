@@ -6,14 +6,19 @@
 ----
 
 [线上体验](https://www.theajack.com/tcon)
+
 [version.md](https://github.com/theajack/tcon/blob/master/helper/version.md)
+
 [build.md](https://github.com/theajack/tcon/blob/master/helper/REMADE.build.md)
+
 ----
+
 #### 1. 效果图
 #### 2. Why TCon
 #### 3. 基本用法
 #### 4. webpack loader
 #### 5. 编写一个tcon插件
+
 ----
 
 # 1.效果图
@@ -35,33 +40,6 @@ tcon 功能
 
 ----
 
-![tcon4](https://www.theajack.com/tcon/images/tcon4.png)
-
-----
-
-![tcon5](https://www.theajack.com/tcon/images/t5.png)
-
-----
-
-![tcon6](https://www.theajack.com/tcon/images/t6.png)
-
-----
-
-![tcon7](https://www.theajack.com/tcon/images/t7.png)
-
-----
-
-![tcon8](https://www.theajack.com/tcon/images/t8.png)
-
-----
-
-![tcon9](https://www.theajack.com/tcon/images/t9.png)
-
-----
-
-
-
-----
 # 2.Why TCon
 #### 2.1 捕获所有异常
 tcon 是一个移动端web调试工具, tcon使用 try catch 语句来包裹所有可执行的代码，其目标是捕获web应用程序上发生的**所有的异常**
