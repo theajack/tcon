@@ -1,0 +1,28 @@
+{
+    "name": "tcon",
+    "version": "1.0.9",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --config webpack.buildmain.config.js",
+        "build:log": "webpack --config webpack.buildplugin.config.js --env.pluginname=log",
+        "build:plugin": "npm run build:log",
+        "build:code": "webpack --config webpack.buildcode.config.js",
+        "build:all": "npm run build && npm run build:plugin && npm run build:code",
+        "build:npm": "node ./copy-to-npm.js",
+        "start": "webpack-dev-server --open"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "babel-loader": "^8.0.6",
+        "gulp": "^4.0.2",
+        "recast": "^0.18.2",
+        "webpack": "^4.39.1",
+        "webpack-cli": "^3.3.6",
+        "webpack-dev-server": "^3.7.2"
+    },
+    "dependencies": {}
+}

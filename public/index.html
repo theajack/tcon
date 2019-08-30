@@ -1,0 +1,274 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Test tcon</title>
+    <style id='log'>
+    </style>
+
+    <style id='panel'>
+    </style>
+  </head>
+  <body>
+    <div style='overflow-x:auto'>
+        <h3 style='color: #aaa;'>PC端访问请按F12然后选择移动端调试</h3>
+
+        <h1><a href="https://git.code.oa.com/tackchen/tcon">TCon</a></h1>
+
+        <h3>基于 try catch 捕获所有异常的移动端调试工具</h3>
+        
+        <hr/>
+        
+        <h4>1. Why TCon</h4>
+        
+        <h4>2. 基本用法</h4>
+        
+        <h4>3. webpack loader</h4>
+        
+        <h4>4. 编写一个tcon插件</h4>
+        
+        <hr/>
+        
+        <h1>1.Why TCon</h1>
+        
+        <h4>1.1 捕获所有异常</h4>
+        
+        <p>tcon 是一个移动端web调试工具, tcon使用 try catch 语句来包裹所有可执行的代码，其目标是捕获web应用程序上发生的<strong>所有的异常</strong>
+        这是它与现有的web移动端调试工具的主要区别，也是tcon的优势</p>
+        
+        <p>现有移动端调试工具几乎都是对 window.onerror 事件进行监听来捕获异常，并且劫持 console上的方法来实现打印
+        然而 window.onerror 只能监听到一些初始化时执行的代码异常，对于大多数异常不能监听到</p>
+        
+        <p>比如下面的代码会触发一个 Uncaught TypeError
+        <pre>
+        function f(){
+            var json = {};
+            json.a.a.a=1;
+        }
+        f()
+        </pre>
+        这个异常并不会被 window.onerror 捕获，这也就会导致现有的工具在发生这种故障时无能为力</p>
+        
+        <p><strong>而tcon可以很好地解决这个问题</strong></p>
+        
+        <h4>1.2 便捷地输入并运行js代码</h4>
+        
+        <p>移动端输入一些 js 代码可以说是非常费时间的一件事情，敲打关键字，中英文、符号、数字之间的切换都是不胜其烦</p>
+        
+        <p>tcon 提供了 js 里常用的关键字和符号，并对 编辑器进行了优化，让您在输入时体验到高效和便捷</p>
+        
+        <h4>1.3 简洁的插件系统</h4>
+        
+        <p>tcon 提供了独立的插件系统，并且把 log 功能作为一个插件推出而不是集成在tcon中</p>
+        
+        <p>使用者可以动态选择加载想要使用的插件，如果觉得功能不够用，您也可以来开发一个自己的插件</p>
+        
+        <p>tcon提供了一些公有的 api 方便您更高效的开发插件</p>
+        
+        <h4>1.4 使用简单、体积小巧</h4>
+        
+        <p>您可使用 npm 或者直接引入 script 来使用tcon，没有api调用操作，十分简单</p>
+        
+        <p>基础js库和log插件加起来只有 24kb 的大小，这其中还包含了大部分的css样式代码</p>
+        
+        <p>使用webpack loader 或 tconCode.js由于会引入抽象语法树，所以体积会有比较大</p>
+        
+        <p>但是这可以通过灵活的加载策略和配置选择在生产环境中禁用掉，并不会影响线上用户体验</p>
+        
+        <h4>1.5 灵活的加载策略</h4>
+        
+        <p>可以使用 npm 安装加载，也可以通过直接引入script标签加载</p>
+        
+        <p>可以通过url参数来控制是否加载</p>
+        
+        <h1>2.基本用法</h1>
+        
+        <p>1.安装tcon主模块
+        <pre>
+        tnpm install @tencent/tcon
+        </pre></p>
+        
+        <p>2.安装tcon-log插件
+        <pre>
+        tnpm install @tencent/tcon-log
+        </pre>
+        3.使用
+        <pre></pre>`
+        import tcon from &#39;@tencent/tcon&#39;;
+        //import tcon 主模块之后会生成一个 window.TCon 对象，这主要是提供给通过script标签引入方式使用的，这里可以忽略
+        import &#39;@tencent/tcon-log&#39;;</p>
+        
+        <p>tcon.init(); // 默认开启tcon调试</p>
+        
+        <p>tcon.init(true); // 表示将根据url参数决定是否开启调试，如果参数中有tcon=1或true，则开启调试
+        <pre></pre>`</p>
+        
+        <p>4.其他方法</p>
+        
+        <p><pre>
+        tcon.text.insert(&#39;str&#39;); // 向代码编辑器中插入代码
+        tcon.text.value(&#39;str&#39;); // 设置代码编辑器的代码
+        tcon.text.value(); // 获取代码编辑器中的代码
+        tcon.use(Plugin); // 引入一个插件，下面的插件章节会具体讲解
+        </pre></p>
+        
+        <h1>3.webpack loader</h1>
+        
+        <h3>3.1 使用</h3>
+        
+        <p>tcon-loader 会将您指定的需要调试的js代码中的适当语句使用try catch包裹，
+        如果没有使用tcon-loader，则无法监听到 uncatch error，只能劫持 console方法和window.onerror 事件</p>
+        
+        <p>安装tcon-loader
+        <pre>
+        tnpm install @tencent/tcon-loader --save-dev
+        </pre>
+        在您项目地webpack配置中加入 loader:&#39;@tencent/tcon-loader&#39;
+        <pre>
+        ...
+        {
+            test: /\.js$/,
+            loader: &#39;@tencent/tcon-loader&#39;,
+            include: [
+                path.resolve(__dirname, &#39;您的需要调试的开发目录，一般为src&#39;)
+            ],
+            exclude: /node_modules/
+        }
+        ...
+        </pre></p>
+        
+        <p>注：</p>
+        
+        <p>1.若是某些文件您不希望使用loader处理，请在js文件顶部加上 <pre>/* tcon-disable */</pre></p>
+        
+        <p>2.请指定include目录，并指定 exclude: /node_modules/ 否则构建时间可能会很长</p>
+        
+        <p>3.如有使用babel-loader，建议在babel-loader之前加上 tcon-loader</p>
+        
+        <p>4.建议只在开发和测试环境使用，在打包发布生产环境时，建议移除 tcon-loader，因为这会生成很多的try catch语句，可能会引起性能问题</p>
+        
+        <h3>3.2 配置参数</h3>
+        
+        <p>使用 options 参数可以为tcon-loader指定一些自定义配置，以满足不同的性能和精度需求。</p>
+        
+        <p><pre>
+        ...
+        {
+            test: /\.js$/,
+            loader: &#39;@tencent/tcon-loader&#39;,
+            options:{
+                Return:false,
+                Declaration:false,
+                traverse:false
+            }
+            include: [
+                path.resolve(__dirname, &#39;您的需要调试的开发目录，一般为src&#39;)
+            ],
+            exclude: /node_modules/
+        }
+        ...
+        </pre></p>
+        
+        <p>其中配置参数信息如下：</p>
+        <table>
+            <tr><td> 属性   </td><td> 类型   </td><td>  默认值  </td><td>  描述  </td></tr>
+            <tr><td> traverse </td><td>Boolean</td><td>true</td><td>当匹配到某个语句并用try catch包裹之后，是否继续对AST继续向下遍历</td></tr>
+            <tr><td> Expression </td><td>Boolean</td><td>true</td><td>是否匹配 表达式 语句</td></tr>
+            <tr><td> Return </td><td>Boolean</td><td>false</td><td>是否匹配 return 语句</td></tr>
+            <tr><td> Throw </td><td>Boolean</td><td>false</td><td>是否匹配 throw 语句</td></tr>
+            <tr><td> Declaration </td><td>Boolean</td><td>false</td><td>是否匹配 变量声明语句 语句</td></tr>
+            <tr><td> context </td><td>Boolean</td><td>false</td><td>try catch接获异常之后是否打印上下文环境</td></tr>
+            <tr><td> trace </td><td>Boolean</td><td>false</td><td>使用console.trace()打印调用栈</td></tr>
+        </table>
+        
+        <h1>4.编写一个tcon插件</h1>
+        
+        <p>如果您希望tcon有更加酷炫的功能，欢迎您帮助贡献插件</p>
+        
+        <p>一个典型的插件模板是这样的：
+        <pre>
+        export default class{
+            constructor(){
+                this.title = &#39;MyPlugin&#39;; // 必须有的一个属性，会被显示到tab上
+            }
+            mounted(){
+                // 插件被渲染到panel之后会触发
+            }
+            onShow(){
+                // 插件显示时被调用
+            }
+            onHide(){
+                // 插件隐藏式被调用
+            }
+            onPageResize(size){
+                // 插件容器大小改变时被调用 
+                // size={width,height}
+            }
+        }
+        </pre></p>
+        
+        <p>你可以载插件中直接引用这句代码加载插件 <pre>if(window.TCon){window.TCon.use(MyPlugin);}</pre>
+        这句代码并不会马上被执行，而是会等待 tcon init执行完成之后才回家在插件</p>
+        
+        <p>您也可以通过引入插件之后 通过 tcon.use(MyPlugin) 来加载插件，如</p>
+        
+        <p><pre>
+        import tcon from &#39;@tencent/tcon&#39;;
+        import MyPlugin from &#39;MyPlugin&#39;;
+        tcon.init();
+        tcon.use(MyPlugin);
+        </pre></p>
+        
+        <p>注：
+        1.mounted钩子会在插件被渲染到panel之后会触发，此时已经将以下几个属性注入到了插件上了：</p>
+        
+        <table>
+            <tr><td> 属性        </td><td> 类型   </td><td>  描述  </td></tr>
+            <tr><td> tab </td><td>DOM元素</td><td>组件的tab，通过点击这个tab可以切换到这个组件</td></tr>
+            <tr><td> page </td><td>DOM元素</td><td>渲染UI的容器</td></tr>
+            <tr><td> index </td><td>Number</td><td>当前组件处在组件列表中的位置</td></tr>
+            <tr><td> tool </td><td>Object</td><td>tcon工具方法库</td></tr>
+        </table>
+
+        <p>其中 tool 有如下几个方法：</p>
+        
+        <table>
+                <tr><td> 属性        </td><td> 参数   </td><td>  备注  </td><td>  返回值  </td></tr>
+                <tr><td> :----:   </td><td> :----:  </td><td> :----:  </td></tr>
+                <tr><td> create </td><td>tag,class,text,click</td><td>创建一个dom元素，参数分别表示标签，类，文本，点击事件，除了tag，其他都是可选，如果没有，请传入一个空字符串</td><td>dom元素</td></tr>
+                <tr><td> attr </td><td> dom,name,value </td><td> 给一个dom设置属性,参数分别表示元素，属性名，属性值</td><td>dom元素</td></tr>
+                <tr><td> append </td><td> dom,(dom or Array)] </td><td> 给一个dom添加孩子节点，可以是dom或者dom 数组 </td><td>dom元素</td></tr>
+                <tr><td> addStyle </td><td> css,[id] </td><td> 添加一个全局样式，css为css代码，id为要给style设置的id值，可选</td><td>style元素</td></tr>
+                <tr><td> hasClass </td><td> dom,name </td><td> 判断dom元素是否还有某类名 </td><td> Boolean </td></tr>
+                <tr><td> addClass </td><td> dom,name or Array </td><td> 给dom元素添加类 </td><td> dom元素 </td></tr>
+                <tr><td> rmClass </td><td> dom,name or Array </td><td> 给dom元素删除类 </td><td> dom元素 </td></tr>
+                <tr><td> replaceClass </td><td> dom or Array,name1,name2 </td><td> 用name2来替换name1类 </td><td> dom or Array </td></tr>
+                <tr><td> active </td><td> dom,... </td><td> 给dom元素添加一个 tc-active 类 </td><td> - </td></tr>
+                <tr><td> inactive </td><td> dom,... </td><td> 给dom元素移除一个 tc-active 类 </td><td> - </td></tr>
+        </table>
+        <p>tool 这个工具只是为了开发插件时更方便的对DOM操作，并不是必须的</p>
+        
+        <p>----end----</p>
+    </div>
+    <script src="bundle.js"></script>
+    <!-- <script src="../dist/tconCode.min.js"></script> -->
+    <script>
+      window.onload= function(){
+        // var mime="text/javascript";
+        // window.editor = CodeMirror.fromTextArea(document.getElementById('Code'), {
+        //     // mode: mime,
+        //     indentWithTabs: true,
+        //     smartIndent: true,
+        //     lineNumbers: true,
+        //     matchBrackets : true,
+        //     autofocus: true
+
+        // })
+      }
+    </script>
+  </body>
+</html>
