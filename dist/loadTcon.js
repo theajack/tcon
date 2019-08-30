@@ -1,7 +1,7 @@
 var loadIndex = 0;
 var loadMax = 0;
 
-var base = 'https://www.theajack.com/tcon/'
+var base = 'https://www.theajack.com/tcon/dist/'
 
 function getLatestVersion(){
     loadScript('version.js',function(){
