@@ -11,7 +11,7 @@ import Key from './keyMode';
 const funcKeys = ['execute','theme','key','small','clear','undo','redo'];
 export let theme = 'light'
 export let view = 'full'
-export let viewRate = 0.6
+export let viewRate = 0.7
 export let keyMode = 'false'
 export let funcs = {
     theme(el){

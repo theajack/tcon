@@ -230,7 +230,6 @@ let editorMainStyle = /*css*/`
     display:flex;
     height:30px;
     line-height:30px;
-    text-align:center;
     border-top:1px solid #eee;
 }
 .tc-tab-item.tc-active {
@@ -243,6 +242,7 @@ let editorMainStyle = /*css*/`
 .tc-tab-item {
     flex:1;
     transition:all .3s ease;
+    text-align:center;
 }
 .tc-touch-active {
     background-color:#ddd!important;

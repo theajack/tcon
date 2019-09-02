@@ -31,8 +31,8 @@
     <div style='overflow-x:auto'>
         <div id='f12'>PC端访问请按F12然后选择移动端调试</div>
 
-        <h1><a href="https://github.com/theajack/tcon">TCon</a> </h1>
-        <div><a href="https://github.com/theajack/tcon/blob/master/helper/version.md">version</a></div>
+        <h1><a href="${gitRes}">TCon</a> </h1>
+        <div><a href="${versionMd}">version</a></div>
         <h3>基于 try catch 捕获所有异常的移动端调试工具</h3>
         <hr/>
         <h4>1. Why TCon</h4>
@@ -42,19 +42,19 @@
         <hr/>
         
         <p>tcon 图例
-        <img alt="导图" src="https://www.theajack.com/tcon/images/TCon.png"/></p>
+        <img alt="导图" src="${imgSrcBase}TCon.png"/></p>
         
         <hr/>
         
-        <p><img alt="tcon1" src="https://www.theajack.com/tcon/images/tcon1.png"/></p>
+        <p><img alt="tcon1" src="${imgSrcBase}tcon1.png"/></p>
         
         <hr/>
         
-        <p><img alt="tcon2" src="https://www.theajack.com/tcon/images/tcon2.png"/></p>
+        <p><img alt="tcon2" src="${imgSrcBase}tcon2.png"/></p>
         
         <hr/>
         
-        <p><img alt="tcon3" src="https://www.theajack.com/tcon/images/tcon3.png"/></p>
+        <p><img alt="tcon3" src="${imgSrcBase}tcon3.png"/></p>
 
         <hr/>
         <h1>1.Why TCon</h1>
@@ -113,12 +113,12 @@ f()
         
         <p>1.安装tcon主模块
         <pre>
-npm install tcon-main
+${npm} install ${installTcon}
         </pre></p>
         
         <p>或 script 标签引入
             <pre>
-&lt;script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.1.min.js">&lt;/script>
+&lt;script src="https://www.theajack.com/tcon/dist/tcon/tcon.${version}.min.js">&lt;/script>
             </pre>
         </p>
 
@@ -130,7 +130,7 @@ npm install tcon-main
 
         或 script 标签引入
         <pre>
-&lt;script src="https://www.theajack.com/tcon/dist/plugin/log/tcon-log.1.1.2.1.min.js">&lt;/script>
+&lt;script src="https://www.theajack.com/tcon/dist/plugin/log/tcon-log.${version}.min.js">&lt;/script>
         </pre>
 
         
@@ -143,9 +143,9 @@ npm install tcon-main
 
         3.使用
         <pre>
-import tcon from 'tcon-main';
+import tcon from '${installTcon}';
 //import tcon 主模块之后会生成一个 window.TCon 对象，这主要是提供给通过script标签引入方式使用的，这里可以忽略
-import 'tcon-log'
+import '${installLog}'
      
 tcon.init(); // 默认开启tcon调试
 tcon.init(true); // 表示将根据url参数决定是否开启调试，如果参数中有tcon=1或true，则开启调试
@@ -168,14 +168,14 @@ tcon.use(Plugin); // 引入一个插件，下面的插件章节会具体讲解
         
         <p>安装tcon-loader
         <pre>
-        npm install tcon-loader --save-dev
+        ${npm} install ${installLoader} --save-dev
         </pre>
         在您项目地webpack配置中加入 loader:&#39;tcon-loader&#39;
         <pre>
         ...
         {
             test: /\.js$/,
-            loader: 'tcon-loader',
+            loader: '${installLoader}',
             include: [
                 path.resolve(__dirname, &#39;您的需要调试的开发目录，一般为src&#39;)
             ],
@@ -202,7 +202,7 @@ tcon.use(Plugin); // 引入一个插件，下面的插件章节会具体讲解
         ...
 {
     test: /\.js$/,
-    loader: 'tcon-loader',
+    loader: '${installLoader}',
     options:{
         Return:false,
         Declaration:false,
@@ -236,13 +236,13 @@ tcon.use(Plugin); // 引入一个插件，下面的插件章节会具体讲解
 
 
         <pre>
-&lt;script src="https://www.theajack.com/tcon/dist/tconCode/tconCode.1.1.2.1.min.js">&lt;/script>
+&lt;script src="https://www.theajack.com/tcon/dist/tconCode/tconCode.${version}.min.js">&lt;/script>
         </pre>
 
         引入 tconCode之前您需要先引如入 tcon.js 
 
         <pre>
-&lt;script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.1.min.js">&lt;/script>
+&lt;script src="https://www.theajack.com/tcon/dist/tcon/tcon.${version}.min.js">&lt;/script>
         </pre>
 
         然后 您可以使用
@@ -290,7 +290,7 @@ export default class{
         <p>您也可以通过引入插件之后 通过 tcon.use(MyPlugin) 来加载插件，如</p>
         
         <p><pre>
-import tcon from 'tcon-main';
+import tcon from '${installTcon}';
 import MyPlugin from 'MyPlugin';
 tcon.init();
 tcon.use(MyPlugin);
@@ -327,9 +327,9 @@ tcon.use(MyPlugin);
         <p>----end----</p>
 
     </div>
-    <script src="./assets/tcon/tcon.1.1.2.1.min.js"></script>
-    <script src="./assets/plugin/log/tcon-log.1.1.2.1.min.js"></script>
-    <script src="./assets/plugin/log/tcon-log.1.1.2.1.min.js"></script>
+    <script src="./assets/tcon/tcon.${version}.min.js"></script>
+    <script src="./assets/plugin/log/tcon-log.${version}.min.js"></script>
+    <script src="./assets/plugin/log/tcon-log.${version}.min.js"></script>
     <script>
         if(!IsPC()){
             document.getElementById('f12').style.display = 'none';

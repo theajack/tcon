@@ -55,6 +55,7 @@ export let cursor = {
     generateLines(){return lines.generate()},
     countPos,
     onInsert(str,nopush){
+        str = str.replace(/	/g,symbol.tab);
         let res = null;
         if(!nopush){
             stack.push(cursor);

@@ -3,7 +3,8 @@
 ----
 
 [线上体验](${online})
-
+[version](${versionMd})
+[build](${buildMd})
 ----
 #### 1. 效果图
 #### 2. Why TCon
@@ -30,32 +31,6 @@ tcon 功能
 ![tcon3](${imgSrcBase}tcon3.png)
 
 ----
-
-![tcon4](${imgSrcBase}tcon4.png)
-
-----
-
-![tcon5](${imgSrcBase}t5.png)
-
-----
-
-![tcon6](${imgSrcBase}t6.png)
-
-----
-
-![tcon7](${imgSrcBase}t7.png)
-
-----
-
-![tcon8](${imgSrcBase}t8.png)
-
-----
-
-![tcon9](${imgSrcBase}t9.png)
-
-----
-
-
 
 ----
 # 2.Why TCon

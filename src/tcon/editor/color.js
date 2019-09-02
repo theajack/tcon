@@ -96,7 +96,10 @@ export function renderColor(text){
         ['(//.*(\n|$))|(\\/\\*(.|\n)*?\\*\\/)','cm'],
         ['\\/[a-zA-Z0-9'+sign.slice(1).join('')+' ]+\\/g?','reg'],//正则
         grArr(keyword1,'k1'),
+        grArr(keyword1,'k1'), // 重复是为了解决相邻同类元素 无法被匹配 比如 function function 只有第一个function被匹配，因为他们共享一个空格
         grArr(keyword2,'k2'),
+        grArr(keyword2,'k2'),
+        grArr(keyword3,'k3'),
         grArr(keyword3,'k3'),
         [signBegin+'[0-9]+(.?[0-9]+)?'+signEnd,'num',/[0-9]+(.?[0-9]+)?/g],
         // [signBegin+'[0-9]+'+signEnd,'num',/[0-9]+/g],
@@ -137,12 +140,12 @@ export let colorStyle = /*css*/`
 .tc-js-k3{
     color: #267f99;
 }
-.tc-js-str,.tc-js-str *{
-    color: #d14a47;
-}
 .tc-js-cm,.tc-js-cm *{
     /*color: #008084;*/
     color:#089900
+}
+.tc-js-str,.tc-js-str *{
+    color: #d14a47;
 }
 .tc-js-num{
     color: #09885a;
@@ -167,11 +170,11 @@ export let colorStyle = /*css*/`
 .tc-dark .tc-js-k3{
     color: #3ac9b0;
 }
-.tc-dark .tc-js-str,.tc-dark .tc-js-str *{
-    color: #ce9178;
-}
 .tc-dark .tc-js-cm,.tc-dark .tc-js-cm *{
     color: #6a8a35;
+}
+.tc-dark .tc-js-str,.tc-dark .tc-js-str *{
+    color: #ce9178;
 }
 .tc-dark .tc-js-num{
     color: #b5cea8;

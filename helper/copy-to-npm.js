@@ -51,7 +51,7 @@ function task(){
         .pipe(gulp.dest('./github/helper'));
     gulp.src('webpack-config/**/*')
         .pipe(gulp.dest('./github/webpack-config'));
-    gulp.src(['*.*','.babelrc','.gitignore','LICENSE'])
+    gulp.src(['*.json','.babelrc','.gitignore','LICENSE'])
         .pipe(gulp.dest('./github'))
         .on('end',function(){
             render();

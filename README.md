@@ -3,7 +3,8 @@
 ----
 
 [线上体验](https://www.theajack.com/tcon)
-
+[version](https://github.com/theajack/tcon/blob/master/helper/version.md)
+[build](https://github.com/theajack/tcon/blob/master/helper/README.build.md)
 ----
 #### 1. 效果图
 #### 2. Why TCon
@@ -30,32 +31,6 @@ tcon 功能
 ![tcon3](https://www.theajack.com/tcon/images/tcon3.png)
 
 ----
-
-![tcon4](https://www.theajack.com/tcon/images/tcon4.png)
-
-----
-
-![tcon5](https://www.theajack.com/tcon/images/t5.png)
-
-----
-
-![tcon6](https://www.theajack.com/tcon/images/t6.png)
-
-----
-
-![tcon7](https://www.theajack.com/tcon/images/t7.png)
-
-----
-
-![tcon8](https://www.theajack.com/tcon/images/t8.png)
-
-----
-
-![tcon9](https://www.theajack.com/tcon/images/t9.png)
-
-----
-
-
 
 ----
 # 2.Why TCon
@@ -118,7 +93,7 @@ npm install tcon-main
 或 script 标签引入
 
 ```
-<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.1.min.js"></script>
 ```
 
 
@@ -130,7 +105,7 @@ npm install tcon-log
 或 script 标签引入
 
 ```
-<script src="https://www.theajack.com/tcon/dist/plugin/log/tcon-log.1.1.2.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/plugin/log/tcon-log.1.1.2.1.min.js"></script>
 ```
 
 
@@ -242,13 +217,13 @@ script 标签引入：
 
 
 ```
-<script src="https://www.theajack.com/tcon/dist/tconCode/tconCode.1.1.2.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tconCode/tconCode.1.1.2.1.min.js"></script>
 ```
 
 引入 tconCode之前您需要先引如入 tcon.js 
 
 ```
-<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.min.js"></script>
+<script src="https://www.theajack.com/tcon/dist/tcon/tcon.1.1.2.1.min.js"></script>
 ```
 
 然后 您可以使用

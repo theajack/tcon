@@ -1,1 +1,1 @@
-window.newVersion = "1.1.2";
+window.newVersion = "1.1.2.1";

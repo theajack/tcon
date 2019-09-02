@@ -2,8 +2,10 @@
 // import tcon from '@tencent/tcon';
 // import '@tencent/tcon-log';
 import tcon from './tcon';
+import './plugin/sources';
 import './plugin/log';
-import Test from './plugin/test';
+import './plugin/test';
+import './plugin/networks';
 // import a from './test';
 // tcon.init();
 tcon.init(1);

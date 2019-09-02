@@ -9,6 +9,8 @@ let def = {
     installLoader: '@tencent/tcon-loader',
     scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
     version:version,
+    versionMd:'https://git.code.oa.com/tackchen/tcon/blob/master/helper/version.md',
+    buildMd:'https://git.code.oa.com/tackchen/tcon/blob/master/helper/README.build.md',
     npm:'tnpm'
 }
 

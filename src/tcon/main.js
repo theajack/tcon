@@ -68,7 +68,7 @@ export function initHeight(){
     let wh;
     if(view === 'small'){
         wh = window.innerHeight * viewRate
-        tc.el.main.style.borderTop = '1px solid #ddd';
+        tc.el.main.style.borderTop = '1px solid #649eff';
     }else{
         wh = window.innerHeight
         tc.el.main.style.borderTop = 'none';
@@ -130,6 +130,7 @@ function addStyle(){
         box-sizing:border-box;
         font-family:Microsoft YAHEI;
         font-size:14px;
+        text-align:left;
     }
     .tc-arrow-w {
         position:fixed;
@@ -196,6 +197,7 @@ function addStyle(){
         border-right:1px solid #fff;
         border-bottom:1px solid #fff;
         text-align:center;
+        cursor: pointer;
     }
     .tc-panel-tab.tc-active {
         background-color:#f7f7f7;

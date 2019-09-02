@@ -3,6 +3,22 @@ let fs = require('fs')
 let TYPE = {
     FULL_README:'FULL_README'
 };
+let githubBase = 'https://github.com/theajack/tcon'
+let outJson = {
+    gitRes: githubBase,
+    installTcon: 'tcon-main',
+    installLog: 'tcon-log',
+    installLoader: 'tcon-loader',
+    scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
+    npm:'npm',
+    versionMd: githubBase+'/blob/master/helper/version.md',
+    buildMd: githubBase+'/blob/master/helper/README.build.md',
+}
+let inJson = {
+    online: 'http://tcon.pages.oa.com/',
+    imgSrcBase: 'http://tcon.pages.oa.com/assets/images/',
+}
+
 let config = {
     FULL_README_OUT:{
         tpl:'./template/README.md',
@@ -12,14 +28,7 @@ let config = {
             './npm/tcon-loader/README.md',
             './npm/tcon-log/README.md',
         ],
-        json:{
-            gitRes: 'https://github.com/theajack/tcon',
-            installTcon: 'tcon-main',
-            installLog: 'tcon-log',
-            installLoader: 'tcon-loader',
-            scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
-            npm:'npm'
-        }
+        json:outJson
     },
     FULL_README_IN:{
         tpl:'./template/README.md',
@@ -29,7 +38,21 @@ let config = {
             './tnpm/tcon-loader/README.md',
             './tnpm/tcon-log/README.md',
         ],
-        json:{}
+        json:inJson
+    },
+    INDEX_HTML_OUT:{
+        tpl:'./template/index.html',
+        des:[
+            './github/dist/index.html',
+        ],
+        json:outJson
+    },
+    INDEX_HTML_IN:{
+        tpl:'./template/index.html',
+        des:[
+            './index.html',
+        ],
+        json:inJson
     }
 };
 

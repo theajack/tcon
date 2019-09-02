@@ -52,7 +52,7 @@ export function generateEditorInput(){
             let curLine = cursor.generateCline();
             let lines = cursor.generateLines();
             // setTimeout(()=>{
-            //     cursor.onInsert('1.11;\n1.1a');
+            //     cursor.onInsert('1.11;\tvar');
             // },100)
         tool.append(textArea,[text,_cursor,lines,curLine]);
     tool.append(main,[placeholder,textArea]);
@@ -132,8 +132,6 @@ export let editorStyle = /*css*/`
         left: 0;
         width: 22px;
         padding-top:6px;
-        padding-right:2px;
-        text-align:right;
         transition: background-color .3s ease;
         padding-bottom:35px;
     }
@@ -142,6 +140,8 @@ export let editorStyle = /*css*/`
         line-height:${VAR.lineHeight}px;
         background-color:#fafafa;
         font-size:11px;
+        text-align:right;
+        padding-right:2px;
         ${textFont}
     }
 `

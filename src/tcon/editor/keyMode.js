@@ -77,7 +77,7 @@ function useKeyMode(){
         }
         key.el.onkeyup=function(e){
             if(!key.enable){return};
-            if(e.keyCode === 9){
+            if(e.keyCode === 9){ // tab键
                 e.preventDefault();
                 let start = this.selectionStart,end = this.selectionEnd;
                 if(start>end){
@@ -94,13 +94,26 @@ function useKeyMode(){
                 }
                 codeStack.push(cursor);
                 render()
-                let send = cursor.lines.slice(0,line+lines).join('\n').length;
+                let newStart,newEnd,tabLength = symbol.tab.length;
                 if(lines>1){
-                    this.selectionStart = cursor.lines.slice(0,line).join('\n').length+((line===0)?0:1);
+                    newEnd = cursor.lines.slice(0,line+lines).join('\n').length;
+                    newStart = cursor.lines.slice(0,line).join('\n').length+((line===0)?0:1);
                 }else{
-                    this.selectionStart = send;
+                    if(e.shiftKey){
+                        if(cursor.position.index<=tabLength){
+                            newStart = start - cursor.position.index;
+                            newEnd = end - cursor.position.index;
+                        }else{
+                            newStart = start - tabLength;
+                            newEnd = end - tabLength;
+                        }
+                    }else{
+                        newStart = start + tabLength;
+                        newEnd = end + tabLength;
+                    }
                 }
-                this.selectionEnd = send
+                this.selectionStart = newStart;
+                this.selectionEnd = newEnd;
                 cursor.initPos(this.value.substring(0,this.selectionEnd));
             }else if(cursorChange.indexOf(e.keyCode) !== -1){
                 cursor.initPos(this.value.substring(0,this.selectionEnd));
