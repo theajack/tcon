@@ -1,13 +1,13 @@
 
 let version = require('../helper/version.json').version;
 let def = {
+    online: 'http://tcon.pages.oa.com/',
+    imgSrcBase: 'http://tcon.pages.oa.com/assets/images/',
     gitRes: 'https://git.code.oa.com/tackchen/tcon',
-    online: 'https://www.theajack.com/tcon',
-    imgSrcBase: 'https://www.theajack.com/tcon/images/',
     installTcon: '@tencent/tcon',
     installLog: '@tencent/tcon-log',
     installLoader: '@tencent/tcon-loader',
-    scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
+    scriptSrcBase: 'http://tcon.pages.oa.com/assets/',
     version:version,
     versionMd:'https://git.code.oa.com/tackchen/tcon/blob/master/helper/version.md',
     buildMd:'https://git.code.oa.com/tackchen/tcon/blob/master/helper/README.build.md',

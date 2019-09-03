@@ -10,13 +10,14 @@ let outJson = {
     installLog: 'tcon-log',
     installLoader: 'tcon-loader',
     scriptSrcBase: 'https://www.theajack.com/tcon/dist/',
+    imgSrcBase: 'https://www.theajack.com/tcon/images/',
     npm:'npm',
     versionMd: githubBase+'/blob/master/helper/version.md',
     buildMd: githubBase+'/blob/master/helper/README.build.md',
+    online: 'https://www.theajack.com/tcon',
+    imgSrcBase: 'https://www.theajack.com/tcon/images/',
 }
 let inJson = {
-    online: 'http://tcon.pages.oa.com/',
-    imgSrcBase: 'http://tcon.pages.oa.com/assets/images/',
 }
 
 let config = {
