@@ -56,5 +56,11 @@ function task(){
         .on('end',function(){
             render();
         });
+    gulp.src('github/dist/plugin/**/*')
+        .pipe(gulp.dest('./assets/plugin'));
+    gulp.src('github/dist/tcon/**/*')
+        .pipe(gulp.dest('./assets/tcon'));
+    gulp.src('github/dist/tconCode/**/*')
+        .pipe(gulp.dest('./assets/tconCode'));
 }
 task();
