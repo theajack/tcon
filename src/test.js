@@ -8,6 +8,7 @@ function f(){
         ca2:22
     }
 }
+
 export default {
     a:1112,
     func:a,
