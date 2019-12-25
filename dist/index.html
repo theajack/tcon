@@ -333,7 +333,14 @@ tcon.use(MyPlugin);
         if(!IsPC()){
             document.getElementById('f12').style.display = 'none';
         }
-        TCon.init()
+        TCon.init({
+            view: 'full',
+            panelState:'open',
+            mainState:'open',
+            keyMode: true,
+            code: "console.log('Hello world')",
+            activeTabs:[2]
+        })
         function IsPC(){  
             var userAgentInfo = navigator.userAgent;
             var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
