@@ -335,13 +335,13 @@ tcon.use(MyPlugin);
         }
         TCon.init({
             view: 'full',
-            panelState:'open',
+            panelState:'half',
             mainState:'open',
             keyMode: true,
             code: "console.log('Hello world')",
             activeTabs:[2]
         })
-        function IsPC(){  
+        function IsPC(){
             var userAgentInfo = navigator.userAgent;
             var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");  
             var flag = true;  
