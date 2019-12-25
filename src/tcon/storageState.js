@@ -19,10 +19,22 @@ export function storageEnable(v){
     return storage('__tcon_enable',v);
 }
 
-export function initStorage(){
-    let s = storage("__tcon_state")
+export function initStorage(initalState){
+    let s = storage("__tcon_state");
+    let hasState = false;
     if(s){
         state = JSON.parse(s);
+        hasState = true;
+    }
+    if(typeof initalState === 'object'){
+        for(let key in initalState){
+            if(typeof state [key] !== 'undefined'){
+                state[key] = initalState[key];
+            }
+        }
+        saveState();
+    }
+    if(hasState){
         openState.state = state.panelState;
         openState.render();
         if(state.mainState === 'open'){
@@ -40,7 +52,7 @@ export function initStorage(){
         if(state.code!==''){
             cursor.onInsert(state.code);
         }
-        if(state.keyMode === 'true'){
+        if(state.keyMode === 'true' || state.keyMode === true){
             fc.key(document.querySelector('.tc-func-key'))
         }
     }

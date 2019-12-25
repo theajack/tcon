@@ -7,8 +7,12 @@ import './plugin/log';
 import './plugin/test';
 import './plugin/networks';
 // import a from './test';
+// import {x} from './test'
+// console.log(a,x);
 // tcon.init();
-tcon.init(1);
+tcon.init({
+    mainState: 'open'
+});
 // tcon.init(1);
 // new a();
 async function ff(){

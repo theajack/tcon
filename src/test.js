@@ -8,7 +8,7 @@ function f(){
         ca2:22
     }
 }
-
+// export let x ='bbbbbbbbb'
 export default {
     a:1112,
     func:a,

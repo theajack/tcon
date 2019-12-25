@@ -27,12 +27,13 @@ let TCon = {
 }
 if(typeof window === "object"){window.TCon = TCon;}
 
-function init(byUrlParam){
-
+function init(config = {}){
+    let byUrlParam = config.byUrlParam;
+    delete config.byUrlParam;
     var _init = function(){
         let container = main.init();
         panel.init(container);
-        initStorage();
+        initStorage(config);
     }
 
     if(byUrlParam===true||byUrlParam===1){

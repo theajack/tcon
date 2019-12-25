@@ -1,9 +1,10 @@
-let fs = require('fs');
+const fs = require('fs');
+function write(file, content){
+    fs.writeFile(file, content, 'utf8', (err) => {
+        if (err) throw err;
+    });
+}
+
 module.exports = {
-    write:function (file,txt,cb){
-        fs.writeFile(file, txt, 'utf8', (err) => {
-            if (err) throw err;
-            if(cb)cb();
-        });
-    }
+    write
 }

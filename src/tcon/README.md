@@ -67,7 +67,7 @@ tcon 是一个移动端web调试工具, tcon使用 try catch 语句来包裹所�
 然而 window.onerror 只能监听到一些初始化时执行的代码异常，对于大多数异常不能监听到
 
 比如下面的代码会触发一个 Uncaught TypeError
-```
+```js
 function f(){
 	var json = {};
 	json.a.a.a=1;
@@ -117,7 +117,7 @@ tnpm install @tencent/tcon
 
 或 script 标签引入
 
-```
+```html
 <script src="https://www.theajack.com/tcon/tcon/tcon.1.0.9.min.js"></script>
 ```
 
@@ -129,29 +129,39 @@ tnpm install @tencent/tcon-log
 
 或 script 标签引入
 
-```
+```html
 <script src="https://www.theajack.com/tcon/plugin/log/tcon-log.1.0.9.min.js"></script>
 ```
 
 
 如果 通过 script 标签引入 可引入
 
-```
+```html
 <script src="https://www.theajack.com/tcon/loadTcon.js"></script>
 ```
 该js会自动加载最新版本，并自动初始化
 
 3.使用
-```
+```js
 import tcon from '@tencent/tcon';
 //import tcon 主模块之后会生成一个 window.TCon 对象，这主要是提供给通过script标签引入方式使用的，这里可以忽略
 import '@tencent/tcon-log';
 
 tcon.init(); // 默认开启tcon调试
 
-tcon.init(true); 
-// 表示将根据url参数决定是否开启调试，如果参数中有tcon=1或true，则开启调试
-// 开启一次以后 浏览器会记录下状态，除非 使用url参数tcon=0，否则会一直存在
+// init 配置参数都是可选的, 以下值都是缺省值
+tcon.init({
+	byUrlParam: false, // 设置为true 表示将根据url参数决定是否开启调试，如果参数中有tcon=1或true，则开启调试, 开启一次以后 浏览器会记录下状态，除非 使用url参数tcon=0，否则会一直存在
+	view: 'full', // 可选值为 full, small
+    panelState:'hide', // 可选值为 hide, half, open
+    mainState:'hide', // 可选值为 hide, open
+    theme:'light', // 可选值为 light, small
+    activeTabs:[], // 可选值为 [0,1,2,3,4,5] 分别表示 ['值','系统','关键字','符号','键盘','输入']
+    code:'', // 编辑器中的代码
+    keyMode:false // 可选值为 false, true
+}); 
+
+// 
 ```
 
 若是使用 script 标签引入 tcon
@@ -159,7 +169,7 @@ tcon.init(true);
 
 4.其他方法
 
-```
+```js
 tcon.text.insert('str'); // 向代码编辑器中插入代码
 tcon.text.value('str'); // 设置代码编辑器的代码
 tcon.text.value(); // 获取代码编辑器中的代码
@@ -178,7 +188,7 @@ tcon-loader 会将您指定的需要调试的js代码中的适当语句使用try
 tnpm install @tencent/tcon-loader --save-dev
 ```
 在您项目地webpack配置中加入 loader:'@tencent/tcon-loader'
-```
+```js
 ...
 {
 	test: /\.js$/,
@@ -204,7 +214,7 @@ tnpm install @tencent/tcon-loader --save-dev
 ### 4.2 配置参数
 使用 options 参数可以为tcon-loader指定一些自定义配置，以满足不同的性能和精度需求。
 
-```
+```js
 ...
 {
 	test: /\.js$/,
@@ -241,19 +251,19 @@ tnpm install @tencent/tcon-loader --save-dev
 script 标签引入：
 
 
-```
+```html
 <script src="https://www.theajack.com/tcon/tconCode/tconCode.1.0.9.min.js"></script>
 ```
 
 引入 tconCode之前您需要先引如入 tcon.js 
 
-```
+```html
 <script src="https://www.theajack.com/tcon/tcon/tcon.1.0.9.min.js"></script>
 ```
 
 然后 您可以使用
 
-```
+```js
 TCon.code('window.alert(1)')
 /*
 	返回值：
@@ -271,7 +281,7 @@ TCon.code('window.alert(1)')
 如果您希望tcon有更加酷炫的功能，欢迎您帮助贡献插件
 
 一个典型的插件模板是这样的：
-```
+```js
 export default class{
     constructor(){
         this.title = 'MyPlugin'; // 必须有的一个属性，会被显示到tab上
@@ -297,7 +307,7 @@ export default class{
 
 您也可以通过引入插件之后 通过 tcon.use(MyPlugin) 来加载插件，如
 
-```
+```js
 import tcon from '@tencent/tcon';
 import MyPlugin from 'MyPlugin';
 tcon.init();
